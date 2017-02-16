@@ -39,6 +39,7 @@ channel.onCordovaReady.subscribe(function() {
         var action = msg.charAt(0);
         if ( action === 'S' ) {
             var keyboardHeight = msg.substr(1);
+            keyboardHeight = Math.floor(parseInt(keyboardHeight, 10) * (window.innerHeight/window.screen.height));
             cordova.plugins.Keyboard.isVisible = true;
             cordova.fireWindowEvent('native.keyboardshow', { 'keyboardHeight': + keyboardHeight });
 
